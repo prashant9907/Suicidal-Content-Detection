@@ -1,2 +1,6 @@
 fastapi
+pydantic
+pandas
+transformers
 uvicorn
+torch
