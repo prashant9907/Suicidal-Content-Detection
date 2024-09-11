@@ -1,12 +1,12 @@
 import React from 'react';
 import '../Styles/NavBar.css';
-import { Home, FileText, Video, Code, FilePlus } from 'lucide-react';
+import { Home, FileText, Video, Code, FilePlus, MessageSquare } from 'lucide-react';
 
 function NavBar({ onNavClick, activeTab }) {
   const navItems = [
     { id: 'home', icon: Home, label: 'Home' },
     { id: 'document-upload', icon: FileText, label: 'Document Upload' },
-    { id: 'chat-bot', icon: FileText, label: 'Chat' },
+    { id: 'chat-bot', icon: MessageSquare, label: 'Chat' },
     // { id: 'image-video-upload', icon: Video, label: 'Image Video Upload'},
 
   ];
