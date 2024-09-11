@@ -8,6 +8,8 @@ import DocumentUpload from './Components/DocumentUpload';
 
 import Footer from './Components/Footer';
 
+import Chatbot from './Components/Chat';
+
 // import { MessageCircle } from 'lucide-react'; // Import the MessageCircle icon from lucide-react
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
       <main className="main-content">
         {activeTab === 'home' && <WelcomeMessage />}
         {activeTab === 'document-upload' && <DocumentUpload />}
+        {activeTab === 'chat-bot' && <Chatbot />}
 
       </main>
       <div className="chat-icon-container">

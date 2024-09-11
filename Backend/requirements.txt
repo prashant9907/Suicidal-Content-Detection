@@ -4,3 +4,4 @@ pandas
 transformers
 uvicorn
 torch
+google-generativeai

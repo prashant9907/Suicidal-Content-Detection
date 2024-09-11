@@ -24,6 +24,8 @@ async def startup_even():
     app.state.model = AutoModelForSequenceClassification.from_pretrained("Prashant-karwasra/Bert-suicidal-content-detection")
     app.state.tokenizer = AutoTokenizer.from_pretrained("Prashant-karwasra/Bert-suicidal-content-detection")
 
+    app.state.history=[]
+
     app.state.my_variable = "This is initialized at startup!"
     app.state.ready_to_serve = False
 
@@ -46,9 +48,11 @@ async def startup_even():
 def create_app():
     from .routes.home import home_router
     from .routes.model_inference import model_inference_router
+    from .routes.chat import chat_router
 
     app.include_router(home_router)
     app.include_router(model_inference_router)
+    app.include_router(chat_router)
     return app
 
 

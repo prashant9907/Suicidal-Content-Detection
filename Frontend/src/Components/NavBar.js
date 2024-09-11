@@ -6,6 +6,7 @@ function NavBar({ onNavClick, activeTab }) {
   const navItems = [
     { id: 'home', icon: Home, label: 'Home' },
     { id: 'document-upload', icon: FileText, label: 'Document Upload' },
+    { id: 'chat-bot', icon: FileText, label: 'Chat' },
     // { id: 'image-video-upload', icon: Video, label: 'Image Video Upload'},
 
   ];
