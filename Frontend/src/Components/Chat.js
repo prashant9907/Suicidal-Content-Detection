@@ -563,7 +563,7 @@
 
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Loader, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Send, Loader, ChevronLeft, ChevronRight, FastForward } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './Chat.css';
 
@@ -573,8 +573,8 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userClassifications, setUserClassifications] = useState([]);
   const [modelClassifications, setModelClassifications] = useState([]);
-  const [showLeftGraph, setShowLeftGraph] = useState(true);
-  const [showRightGraph, setShowRightGraph] = useState(true);
+  const [showLeftGraph, setShowLeftGraph] = useState(false);
+  const [showRightGraph, setShowRightGraph] = useState(false);
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
 
@@ -591,7 +591,7 @@ const Chatbot = () => {
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 100)}px`;
+      textareaRef.current.style.height = `${Math.max(textareaRef.current.scrollHeight, 20)}px`;
     }
   };
 

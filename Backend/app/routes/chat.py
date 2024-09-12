@@ -3,15 +3,11 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 import google.generativeai as genai
 import torch
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
 chat_router = APIRouter()
 
-# Configure Gemini API
-# api_key = os.getenv('GEMINI_API_KEY')
-# if not api_key:
-#     raise HTTPException(status_code=500, detail="Gemini API key not found")
-
-genai.configure(api_key="AIzaSyBVKJ4BPdZIswyAbFXgrMdcUJc5tovabWA")
+genai.configure(api_key="GEMINI_API_KEY")
 
 # Gemini model configuration
 generation_config = {
@@ -23,10 +19,19 @@ generation_config = {
 
 system_instruction = """You are a compassionate friend engaging in a supportive conversation. Respond naturally, as if chatting with someone you care about. Listen attentively and offer gentle guidance based on your wisdom and life experience. Avoid clinical language or suggesting professional help. Instead, provide a caring perspective and practical advice for navigating life's challenges. Keep your responses concise, warm, and relatable, using everyday language. Aim for messages around 2-3 sentences, never exceeding 100 words. Your goal is to be a comforting presence, helping the person feel heard and offering hope through your words and understanding."""
 
+custom_safety_settings = {
+    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+    HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+}
+
+
 gemini_model = genai.GenerativeModel(
     model_name= "gemini-1.5-flash", #"gemini-1.5-pro",
     generation_config=generation_config,
-    system_instruction=system_instruction
+    system_instruction=system_instruction,
+    safety_settings=custom_safety_settings,
 )
 
 class ChatInput(BaseModel):
@@ -54,7 +59,7 @@ async def chat_endpoint(chat_input: ChatInput, request: Request):
 
     # Generate model response
     chat = gemini_model.start_chat(history=request.app.state.history)
-    response = chat.send_message(user_input)
+    response = chat.send_message(user_input,safety_settings = custom_safety_settings)
     model_output = response.text
 
 

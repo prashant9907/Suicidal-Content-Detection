@@ -19,7 +19,7 @@ const WelcomeMessage = () => {
         <div className="welcome-content animate-fade-in">
           <h1>Welcome to</h1>
           <h2 className="company-name">Suicidal Content Detection</h2>
-          <p className="tagline animate-pulse">Powered by IIIT Una</p>
+          <p className="tagline animate-pulse">Sponsored by IIIT Una</p>
         </div>
         {/* <div className="logo right-logo animate-slide-left">
           <img src={logo3} alt="latentForce.ai Logo" />
