@@ -29,7 +29,7 @@ async def predict_docKV(request: Request, data_request: DataRequest):
     )
 
 
-@model_inference_router.post('/detect')
+@model_inference_router.post('/detect/')
 async def predict(request: Request):
     form_data = await request.form()
     text = form_data.get("text")

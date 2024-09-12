@@ -45,7 +45,7 @@ def predict(text, tokenizer, model):
     probabilities = torch.softmax(outputs.logits, dim=-1)
     return probabilities.tolist()[0]  # Probability of class 1 (suicidal content)
 
-@chat_router.post("/chat", response_model=ChatResponse)
+@chat_router.post("/chat/", response_model=ChatResponse)
 async def chat_endpoint(chat_input: ChatInput, request: Request):
     user_input = chat_input.text
 
