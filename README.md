@@ -1,4 +1,4 @@
-# Suicidal-Content-Detection
+# Suicidal Text Detection on Social Media for Suicide Prevention Using Deep Learning Models
 
 ## video url:
 https://www.loom.com/share/f4584a8c0a65474f8b556cb4b70032f8?sid=5b9c09af-2ff3-4188-878f-59e30f8629ea
